@@ -7,3 +7,9 @@
 
 # Install Inertia - https://inertiajs.com/client-side-setup
 > npm install @inertiajs/vue3
+
+# Install ESLint
+> npm install --save-dev eslint eslint-plugin-vue
+
+# Install Prettier
+> npm install --save-dev prettier eslint-plugin-prettier
