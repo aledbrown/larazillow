@@ -4,5 +4,6 @@
 ### Info
 # Install Vue
 > npm install --save-dev @vitejs/plugin-vue
-> npm install --save-dev vue-filepond filepond
-> npm install --save-dev filepond-plugin-file-validate-type
+
+# Install Inertia - https://inertiajs.com/client-side-setup
+> npm install @inertiajs/vue3
