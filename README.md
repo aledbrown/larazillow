@@ -1,6 +1,10 @@
 ### Master Laravel, Vue 3, Inertia (VILT Stack)
 > https://www.udemy.com/course/master-laravel-6-with-vuejs-fullstack-development/
 
+### General
+> php artisan migrate:rollback --step=1
+> composer dump-autoload
+
 ### Info
 # Install Vue
 > npm install --save-dev @vitejs/plugin-vue
