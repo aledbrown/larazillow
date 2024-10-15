@@ -35,11 +35,22 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        // WHERE IS THE VALIDATION?
-        Listing::create($request->all());
+        $validatedData = $request->validate([
+            'beds' => 'required|integer|min:0|max:20',
+            'baths' => 'required|integer|min:0|max:20',
+            'area' => 'required|integer|min:15|max:1500',
+            'city' => 'required',
+            'code' => 'required',
+            'street' => 'required',
+            'street_nr' => 'required|integer|min:1|max:1000',
+            'price' => 'required|integer|min:1|max:20000000',
+        ]);
+
+        Listing::create($validatedData);
 
         return redirect()->route('listing.index')
-            ->with('success', 'Listing was created!');
+            ->with('success', 'Listing was created!')
+            ->withInput();
     }
 
     /**
