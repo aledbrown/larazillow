@@ -1,5 +1,5 @@
 <template>
-    <div><Link :href="`/listing`">Back</Link></div>
+    <div><Link :href="route('listing.index')">Back</Link></div>
     <div>Listing</div>
     <ListingAddress :listing="listing" />
 </template>

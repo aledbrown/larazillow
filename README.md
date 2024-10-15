@@ -17,3 +17,7 @@
 
 # Install Prettier
 > npm install --save-dev prettier eslint-plugin-prettier
+
+# Install Ziggy
+> composer require tightenco/ziggy
+> https://github.com/tighten/ziggy
