@@ -49,8 +49,7 @@ class ListingController extends Controller
         Listing::create($validatedData);
 
         return redirect()->route('listing.index')
-            ->with('success', 'Listing was created!')
-            ->withInput();
+            ->with('success', 'Listing was created!');
     }
 
     /**
