@@ -5,7 +5,7 @@
                 <ListingAddress :listing="listing" />
             </Link>
         </div>
-        <div>
+        <div class="text-2xl">
             <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
         </div>
         <div>

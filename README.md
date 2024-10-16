@@ -15,9 +15,15 @@
 # Install ESLint
 > npm install --save-dev eslint eslint-plugin-vue
 
-# Install Prettier
+# Install Prettier (didn't use this)
 > npm install --save-dev prettier eslint-plugin-prettier
 
 # Install Ziggy
 > composer require tightenco/ziggy
 > https://github.com/tighten/ziggy
+
+# Install Tailwind CSS
+> https://tailwindcss.com/docs/guides/vite#vue
+> npm install -D tailwindcss postcss autoprefixer 
+> npx tailwindcss init -p
+> npm install -D @tailwindcss/forms
