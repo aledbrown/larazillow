@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'aledb@mac.com',
         ]);
 
-        Listing::factory(20)->create();
+        Listing::factory(20)->create([
+            'by_user_id' => 1
+        ]);
     }
 }
