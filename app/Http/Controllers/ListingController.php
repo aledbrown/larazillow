@@ -13,14 +13,38 @@ class ListingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $this->authorize('viewAny', Listing::class);
+
+        $filters = $request->only([
+            'priceFrom', 'priceTo', 'beds', 'baths', 'areaFrom', 'areaTo'
+        ]);
 
         return inertia(
             'Listing/Index',
             [
-                'listings' => Listing::orderByDesc('created_at')->paginate(12)
+                'filters' => $filters,
+                'listings' => Listing::orderByDesc('created_at')
+                    ->when(
+                        $filters['priceFrom'] ?? false,
+                        fn ($query, $value) => $query->where('price', '>=', $value)
+                    )->when(
+                        $filters['priceTo'] ?? false,
+                        fn ($query, $value) => $query->where('price', '<=', $value)
+                    )->when(
+                        $filters['beds'] ?? false,
+                        fn ($query, $value) => $query->where('beds', (int)$value < 6 ? '=' : '>=', $value)
+                    )->when(
+                        $filters['baths'] ?? false,
+                        fn ($query, $value) => $query->where('baths', (int)$value < 6 ? '=' : '>=', $value)
+                    )->when(
+                        $filters['areaFrom'] ?? false,
+                        fn ($query, $value) => $query->where('area', '>=', $value)
+                    )->when(
+                        $filters['areaTo'] ?? false,
+                        fn ($query, $value) => $query->where('area', '<=', $value)
+                    )->paginate(12)->withQueryString()
             ]
         );
     }
