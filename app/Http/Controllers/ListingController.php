@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorize('viewAny', Listing::class);
+
         return inertia(
             'Listing/Index',
             [
@@ -25,6 +30,8 @@ class ListingController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Listing::class);
+
         return inertia(
             'Listing/Create'
         );
@@ -35,6 +42,8 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Listing::class);
+
         $validatedData = $request->validate([
             'beds' => 'required|integer|min:0|max:20',
             'baths' => 'required|integer|min:0|max:20',
@@ -58,6 +67,7 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
+        $this->authorize('view', $listing);
         return inertia(
             'Listing/Show',
             [
@@ -71,6 +81,8 @@ class ListingController extends Controller
      */
     public function edit(Listing $listing)
     {
+        $this->authorize('update', $listing);
+
         return inertia(
             'Listing/Edit',
             [
@@ -84,6 +96,8 @@ class ListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
+        $this->authorize('update', $listing);
+
         $listing->update(
             $request->validate([
                 'beds' => 'required|integer|min:0|max:20',
@@ -105,6 +119,8 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
+        $this->authorize('delete', $listing);
+
         $listing->delete();
         return redirect()->back()
             ->with('success', 'Listing was deleted!');
