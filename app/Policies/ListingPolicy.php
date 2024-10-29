@@ -10,6 +10,17 @@ class ListingPolicy
 {
     use HandlesAuthorization;
 
+    // SUPER USER ACCESS
+    public function before(?User $user, string $ability): ?bool
+    {
+        if ($user) {
+            if ($user->is_admin /* && $ability === 'update' */) {
+                return true;
+            }
+        }
+        return null;
+    }
+
     public function viewAny(?User $user): bool
     {
         return true;
