@@ -46,7 +46,8 @@ class ListingController extends Controller
             'price' => 'required|integer|min:1|max:20000000',
         ]);
 
-        Listing::create($validatedData);
+        // Associate new Listings to Logged-in User
+        $request->user()->listings()->create($validatedData);
 
         return redirect()->route('listing.index')
             ->with('success', 'Listing was created!');
