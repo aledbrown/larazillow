@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
         ]);
         $middleware->redirectGuestsTo('/login');
+        $middleware->validateCsrfTokens(['/logout']);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
