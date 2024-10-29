@@ -10,7 +10,7 @@ class ListingPolicy
 {
     use HandlesAuthorization;
 
-    // SUPER USER ACCESS
+    // SUPERUSER ACCESS
     public function before(?User $user, string $ability): ?bool
     {
         if ($user) {
