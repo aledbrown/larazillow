@@ -21,6 +21,7 @@ class AgentListingController extends Controller
         return inertia(
             'Agent/Index',
             [
+                'filters' => $filters,
                 'listings' => Auth::user()
                     ->listings()
                     // ->mostRecent()
