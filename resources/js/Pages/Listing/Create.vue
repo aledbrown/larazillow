@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-span-2">
-                <label class="block mb-1 text-gray-500 dark:text-gray-300 font-medium">Street Nr</label>
+                <label class="block mb-1 text-gray-500 dark:text-gray-300 font-medium">Street Number</label>
                 <input v-model.number="form.street_nr" type="text" class="block w-full p-2 rounded-md shadow-sm border border-gray-300 dark:border-gray-600 text-gray-500" />
                 <div v-if="form.errors.street_nr" class="input-error">
                     {{ form.errors.street_nr }}

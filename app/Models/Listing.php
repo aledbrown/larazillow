@@ -16,6 +16,10 @@ class Listing extends Model
         'beds', 'baths', 'area', 'city', 'code', 'street', 'street_nr', 'price'
     ];
 
+    protected $sortable = [
+        'price', 'created_at'
+    ];
+
     // RELATIONSHIPS
     public function owner(): BelongsTo
     {
@@ -53,7 +57,15 @@ class Listing extends Model
             $builder->where('price', '>=', $priceFrom);
         })->when($filters['priceTo'] ?? null, function (Builder $builder, string $priceTo) {
             $builder->where('price', '<=', $priceTo);
-        });
+        })->when($filters['deleted'] ?? false, function (Builder $builder) {
+            $builder->onlyTrashed();
+        })->when(
+            $filters['by'] ?? false,
+            fn ($query, $value) =>
+            !in_array($value, $this->sortable)
+                ? $query :
+                $query->orderBy($value, $filters['order'] ?? 'desc')
+        );
         return $builder;
     }
 
