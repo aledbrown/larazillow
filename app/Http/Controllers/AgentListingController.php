@@ -26,7 +26,8 @@ class AgentListingController extends Controller
                     ->listings()
                     // ->mostRecent()
                     ->filter($filters)
-                    ->get()
+                    ->paginate()
+                    ->withQueryString()
             ]
         );
     }
