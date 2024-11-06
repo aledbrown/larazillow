@@ -27,6 +27,12 @@ Route::prefix('agent')
     ->name('agent.')
     ->middleware('auth')
     ->group(function () {
+        Route::name('listing.restore')
+            ->put(
+                'listing/{listing}/restore',
+                [\App\Http\Controllers\AgentListingController::class, 'restore']
+            )->withTrashed();
         Route::resource('listing', \App\Http\Controllers\AgentListingController::class)
-        ->only(['index', 'create', 'store', 'destroy', 'edit', 'update']);
+            ->only(['index', 'destroy', 'edit', 'update', 'create', 'store'])
+            ->withTrashed();
     });

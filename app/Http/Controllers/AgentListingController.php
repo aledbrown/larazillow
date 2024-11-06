@@ -72,6 +72,14 @@ class AgentListingController extends Controller
             ->with('success', 'Listing was deleted!');
     }
 
+    public function restore(Listing $listing)
+    {
+        $this->authorize('restore', $listing);
+
+        $listing->restore();
+        return redirect()->back()->with('success', 'Listing was restored!');
+    }
+
     public function edit(Listing $listing)
     {
         $this->authorize('update', $listing);
