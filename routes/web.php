@@ -14,10 +14,7 @@ Route::get('/hello', [IndexController::class, 'show'])
     ->middleware('auth');
 
 Route::resource('listing', ListingController::class)
-    ->only(['create', 'store', 'edit', 'update'])
-    ->middleware('auth');
-Route::resource('listing', ListingController::class)
-    ->except(['create', 'store', 'edit', 'update', 'destroy']);
+    ->only(['index', 'show']);
 
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'create'])->name('login');
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'store'])->name('login.store');
@@ -30,5 +27,6 @@ Route::prefix('agent')
     ->name('agent.')
     ->middleware('auth')
     ->group(function () {
-        Route::resource('listing', \App\Http\Controllers\AgentListingController::class);
+        Route::resource('listing', \App\Http\Controllers\AgentListingController::class)
+        ->only(['index', 'create', 'store', 'destroy', 'edit', 'update']);
     });

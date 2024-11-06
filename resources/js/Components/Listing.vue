@@ -12,8 +12,9 @@
                 <ListingAddress :listing="listing" class="text-gray-500" />
             </Link>
         </div>
-        <div class="text-2xl">
-            <Link :href="route('listing.edit', { listing: listing.id })">Edit</Link>
+
+        <div v-if="user" class="text-2xl">
+            <Link :href="route('agent.listing.edit', { listing: listing.id })">Edit</Link>
         </div>
     </Box>
 </template>

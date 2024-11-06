@@ -85,15 +85,15 @@ const form = useForm({
     street_nr: null,
     price: 0,
 })
-const create = () => form.post(route('listing.store'))
+const create = () => form.post(route('agent.listing.store'))
 </script>
 
-<style scoped>
-label {
-    margin-right: 2em;
-}
+<!--<style scoped>-->
+<!--label {-->
+<!--    margin-right: 2em;-->
+<!--}-->
 
-div {
-    padding: 2px
-}
-</style>
+<!--div {-->
+<!--    padding: 2px-->
+<!--}-->
+<!--</style>-->

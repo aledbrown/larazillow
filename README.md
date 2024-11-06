@@ -3,6 +3,7 @@
 
 ### General
 > php artisan migrate:rollback --step=1
+> php artisan optimize:clear
 > composer dump-autoload
 
 ### Info

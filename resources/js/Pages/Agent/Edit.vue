@@ -88,15 +88,15 @@ const form = useForm({
     street_nr: props.listing.street_nr,
     price: props.listing.price,
 })
-const update = () => form.put(route('listing.update', props.listing.id))
+const update = () => form.put(route('agent.listing.update', props.listing.id))
 </script>
 
-<style scoped>
-label {
-    margin-right: 2em;
-}
+<!--<style scoped>-->
+<!--label {-->
+<!--    margin-right: 2em;-->
+<!--}-->
 
-div {
-    padding: 2px
-}
-</style>
+<!--div {-->
+<!--    padding: 2px-->
+<!--}-->
+<!--</style>-->
