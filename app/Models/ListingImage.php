@@ -14,6 +14,8 @@ class ListingImage extends Model
         'filename',
     ];
 
+    protected $appends = ['src'];
+
     protected static function boot()
     {
         parent::boot();
@@ -29,4 +31,9 @@ class ListingImage extends Model
     {
         return $this->belongsTo(Listing::class, 'listing_id');
     }
+
+    public function getSrcAttribute()
+    {
+        return asset("storage/{$this->filename}");
+    } // usage -> $listingImage->src
 }

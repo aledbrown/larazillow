@@ -10,6 +10,8 @@ class AgentListingImageController extends Controller
 {
     public function create(Listing $listing)
     {
+        $listing->load(['images']);
+
         return inertia(
             'Agent/ListingImage/Create',
             ['listing' => $listing]
