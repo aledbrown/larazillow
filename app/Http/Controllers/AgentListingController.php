@@ -24,8 +24,8 @@ class AgentListingController extends Controller
                 'filters' => $filters,
                 'listings' => Auth::user()
                     ->listings()
-                    // ->mostRecent()
                     ->filter($filters)
+                    ->withCount('images')
                     ->paginate()
                     ->withQueryString()
             ]
