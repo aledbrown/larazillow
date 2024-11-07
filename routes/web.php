@@ -37,5 +37,5 @@ Route::prefix('agent')
             ->withTrashed();
 
         Route::resource('listing.image', \App\Http\Controllers\AgentListingImageController::class)
-            ->only('create', 'store');
+            ->only('create', 'store', 'destroy');
     });

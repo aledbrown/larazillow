@@ -21,9 +21,7 @@ class ListingImage extends Model
         parent::boot();
 
         static::deleting(function ($listingImage) {
-            if ($listingImage->isForceDeleting()) {
-                \Storage::disk('public')->delete($listingImage->filename);
-            }
+            \Storage::disk('public')->delete($listingImage->filename);
         });
     }
 
