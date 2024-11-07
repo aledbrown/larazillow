@@ -47,7 +47,7 @@ const upload = () => {
         route('agent.listing.image.store', { listing: props.listing.id }),
         {
             onSuccess: () => {
-                console.log("tried to reset form");
+                // console.log("tried to reset form");
                 form.reset('images');
             },
         },
