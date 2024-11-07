@@ -16,7 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
         ]);
         $middleware->redirectGuestsTo('/login');
-        $middleware->validateCsrfTokens(['/logout']);
+        $middleware->validateCsrfTokens([
+            '/logout',
+            '/agent/listing/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

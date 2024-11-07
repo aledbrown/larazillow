@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ListingImage;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Listing extends Model
 {
@@ -20,10 +22,25 @@ class Listing extends Model
         'price', 'created_at'
     ];
 
+    // BOOT FUNCTION
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($listing) {
+            $listing->images()->delete();
+        });
+    }
+
     // RELATIONSHIPS
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'by_user_id');
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(related: ListingImage::class, foreignKey: 'listing_id');
     }
 
     // SCOPES

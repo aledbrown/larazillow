@@ -14,12 +14,18 @@ class ListingImage extends Model
         'filename',
     ];
 
-    /**
-     * Get the user that owns the ListingImage
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($listingImage) {
+            if ($listingImage->isForceDeleting()) {
+                \Storage::disk('public')->delete($listingImage->filename);
+            }
+        });
+    }
+
+    public function listing(): BelongsTo
     {
         return $this->belongsTo(Listing::class, 'listing_id');
     }
