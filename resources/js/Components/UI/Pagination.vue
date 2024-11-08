@@ -1,5 +1,5 @@
 <template>
-    <div class="flex gap-1">
+    <div v-if="links.length > 3" class="flex gap-1">
         <Link
             v-for="(link, index) in links"
             :key="index" class="py-2 px-4 rounded-md"
