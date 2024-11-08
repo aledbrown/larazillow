@@ -1,0 +1,1 @@
+import{_ as o,o as s,c as a,a as t,A as r}from"./app-DEiOLNWa.js";const d={},c={class:"border border-gray-200 dark:border-gray-800 rounded-md p-4 shadow-sm dark:text-gray-300"},n={class:"text-gray-500 font-medium mb-1"};function _(e,l){return s(),a("div",c,[t("div",n,[r(e.$slots,"header")]),r(e.$slots,"default")])}const i=o(d,[["render",_]]);export{i as B};
