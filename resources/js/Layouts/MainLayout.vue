@@ -9,8 +9,10 @@
                     <Link :href="route('listing.index')">LaraZillow</Link>
                 </div>
                 <div v-if="user" class="flex items-center gap-4">
-                    <Link class="text-sm text-gray-500" :href="route('agent.listing.index')">{{ user.name }}</Link>
-                    <Link :href="route('agent.listing.create')" class="btn-primary">+ New Listing</Link>
+                    <div v-if="user.is_admin" class="flex items-center gap-4">
+                        <Link class="text-sm text-gray-500" :href="route('agent.listing.index')">{{ user.name }}</Link>
+                        <Link :href="route('agent.listing.create')" class="btn-primary">+ New Listing</Link>
+                    </div>
                     <div>
                         <Link :href="route('logout')" method="delete" as="button">Logout</Link>
                     </div>

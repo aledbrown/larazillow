@@ -13,6 +13,8 @@ class AgentListingController extends Controller
 
     public function index(Request $request)
     {
+        $this->authorize('nonAdmin', Listing::class);
+
         $filters = [
             'deleted' => $request->boolean('deleted'),
             ...$request->only(['by', 'order'])

@@ -21,6 +21,11 @@ class ListingPolicy
         return null;
     }
 
+    public function nonAdmin(): bool
+    {
+        return false;
+    }
+
     public function viewAny(?User $user): bool
     {
         return true;
@@ -34,7 +39,7 @@ class ListingPolicy
     public function create(User $user): bool
     {
         // CHANGE LATER
-        return true;
+        return $user->is_admin;
     }
 
     public function update(User $user, Listing $listing): bool
