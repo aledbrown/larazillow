@@ -1,1 +1,0 @@
-import{c as a,a as s,t as n,F as r,o}from"./app-DEiOLNWa.js";/* empty css            */const u={__name:"Index",props:{message:String},setup(t){return(i,e)=>(o(),a(r,null,[e[0]||(e[0]=s("div",null,"Index using MainLayout this is working",-1)),s("div",null,n(t.message),1)],64))}};export{u as default};

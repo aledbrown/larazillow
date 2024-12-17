@@ -42,8 +42,8 @@ class HandleInertiaRequests extends Middleware
                 'name' => $request->user()->name,
                 'email' => $request->user()->email,
             ];
+            if ($request->user()->is_admin) $user_details['is_admin'] = true;
         }
-        if ($request->user()->is_admin) $user_details['is_admin'] = true;
 
         return array_merge(parent::share($request), [
             'flash' => [
