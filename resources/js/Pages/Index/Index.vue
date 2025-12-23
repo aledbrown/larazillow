@@ -1,7 +1,10 @@
-<template>Hello! {{ counter }}</template>
+<template>
+    <div>Index using MainLayout this is working</div>
+    <div>{{ message }}</div>
+</template>
 
 <script setup>
-import { ref } from 'vue';
-const counter = ref(0);
-setInterval(() => counter.value++, 1000);
+defineProps({
+    message: String
+})
 </script>

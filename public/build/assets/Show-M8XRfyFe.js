@@ -1,0 +1,1 @@
+import{c as a,a as t,g as r,i as o,u as s,F as n,o as l,e as u,j as i}from"./app-Dp6_hJZt.js";/* empty css            */const _={__name:"Show",setup(m){return(p,e)=>(l(),a(n,null,[e[1]||(e[1]=t("div",null,"Show",-1)),r(s(i),{href:"/"},{default:o(()=>e[0]||(e[0]=[u("Main Page")])),_:1})],64))}};export{_ as default};
